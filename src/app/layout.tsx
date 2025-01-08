@@ -14,9 +14,21 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Online Sahulat - Your All-in-One Store Management Solution.",
+  title: "Muhammad Aqib - Full Stack MERN Developer & Problem Solver",
   description:
-    "Manage your store operations with Sahulat. From product management to order tracking, Sahulat simplifies your workflow and helps you focus on baking the best treats.",
+    "Welcome to Muhammad Aqib's portfolio. A passionate Full Stack MERN Developer with expertise in React Native, NestJS, and SaaS application development. Explore projects showcasing problem-solving and innovative solutions.",
+  keywords: [
+    "Muhammad Aqib",
+    "Full Stack Developer",
+    "MERN Developer",
+    "React Native Developer",
+    "NestJS Developer",
+    "Portfolio Website",
+    "JavaScript Developer",
+    "SaaS Application Development",
+    "Problem Solver",
+    "Software Engineer",
+  ],
 };
 
 export default function RootLayout({
