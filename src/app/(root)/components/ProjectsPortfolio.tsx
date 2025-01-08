@@ -2,71 +2,81 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ExternalLink, Github } from "lucide-react";
+import { projectsData } from "@/utils/data/projects-data";
 
-const projects = [
-  {
-    title: "E-commerce Platform",
-    description:
-      "Built a scalable e-commerce platform using MERN stack with 50k+ daily active users.",
-    link: "https://github.com/muhammada86/ecommerce-platform",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "Developed a real-time task management app with React Native and Firebase, improving team productivity by 25%.",
-    link: "https://github.com/muhammadaqib86/task-management-app",
-  },
-  {
-    title: "Cloud-based CMS",
-    description:
-      "Created a cloud-based CMS using Next.js and AWS, reducing hosting costs by 40% for clients.",
-    link: "https://github.com/muhammadaqib86/cloud-cms",
-  },
-];
-
-const ProjectsPortfolio = () => {
+const ProjectPortfolio = () => {
   return (
     <section
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-secondary/50"
+      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       id="projects"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 opacity-10"></div>
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-8"
+          className="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
         >
-          Projects Portfolio
+          Project Experience
         </motion.h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
+        <div className="space-y-16">
+          {projectsData.map((project, index) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card>
+              <Card className="backdrop-blur-sm bg-white/10 border-none shadow-xl overflow-hidden">
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="text-2xl font-bold">
+                    {project.name}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
+                  <p className="text-lg font-semibold mb-2">{project.role}</p>
                   <p className="text-muted-foreground mb-4">
                     {project.description}
                   </p>
-                  <Button asChild>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Project
-                    </a>
-                  </Button>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tools.map((tool, i) => (
+                      <Badge key={i} variant="secondary">
+                        {tool}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex space-x-4">
+                    {project.demo && (
+                      <Button variant="outline" asChild>
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Demo
+                        </a>
+                      </Button>
+                    )}
+                    {project.code && (
+                      <Button variant="outline" asChild>
+                        <a
+                          href={project.code}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          Code
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -77,4 +87,4 @@ const ProjectsPortfolio = () => {
   );
 };
 
-export default ProjectsPortfolio;
+export default ProjectPortfolio;

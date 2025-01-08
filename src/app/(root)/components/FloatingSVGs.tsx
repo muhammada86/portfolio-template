@@ -4,26 +4,42 @@ import { motion } from "framer-motion";
 import { useCallback } from "react";
 
 const FloatingSVGs = () => {
-  const shapes = Array(5).fill(null);
+  const shapes = Array(8).fill(null);
 
   const generateRandomShape = useCallback(() => {
-    const isOval = Math.random() > 0.5;
+    const shapeType = Math.floor(Math.random() * 3); // 0: triangle, 1: box, 2: line
     const color = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${
       Math.random() * 255
-    }, 0.2)`;
+    }, 0.05)`; // Reduced opacity to 0.05
 
-    if (isOval) {
-      const rx = 20 + Math.random() * 30;
-      const ry = 20 + Math.random() * 30;
-      return <ellipse cx="50%" cy="50%" rx={rx} ry={ry} fill={color} />;
-    } else {
-      const size = 40 + Math.random() * 40;
-      return (
-        <polygon
-          points={`0,${size} ${size / 2},0 ${size},${size}`}
-          fill={color}
-        />
-      );
+    switch (shapeType) {
+      case 0: // Triangle
+        const size = 30 + Math.random() * 30;
+        return (
+          <polygon
+            points={`0,${size} ${size / 2},0 ${size},${size}`}
+            fill={color}
+          />
+        );
+      case 1: // Box
+        const width = 20 + Math.random() * 30;
+        const height = 20 + Math.random() * 30;
+        return <rect width={width} height={height} fill={color} />;
+      case 2: // Line
+        const length = 30 + Math.random() * 50;
+        const strokeWidth = 1 + Math.random() * 3;
+        return (
+          <line
+            x1="0"
+            y1="0"
+            x2={length}
+            y2="0"
+            stroke={color}
+            strokeWidth={strokeWidth}
+          />
+        );
+      default:
+        return null;
     }
   }, []);
 
@@ -40,7 +56,7 @@ const FloatingSVGs = () => {
             rotate: [0, 360],
           }}
           transition={{
-            duration: 20 + index * 2,
+            duration: 30 + index * 2,
             repeat: Infinity,
             ease: "linear",
           }}

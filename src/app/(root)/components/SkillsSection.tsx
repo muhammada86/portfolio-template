@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 
 const skills = [
   { name: "React.js", logo: "/svg/react.svg" },
+  { name: "React Native", logo: "/svg/react.svg" },
   { name: "Next.js", logo: "/svg/nextjs.svg" },
   { name: "Node.js", logo: "/svg/node.svg" },
   { name: "Express.js", logo: "/svg/express.svg" },
@@ -15,6 +16,14 @@ const skills = [
   { name: "AWS", logo: "/svg/aws.svg" },
   { name: "Azure", logo: "/svg/azure.svg" },
   { name: "GraphQL", logo: "/svg/graphql.svg" },
+  {
+    name: "PostgreSQL",
+    logo: "/svg/postgresql.svg",
+  },
+  {
+    name: "Sql Server",
+    logo: "/svg/sql.svg",
+  },
 ];
 
 const SkillsSection = () => {

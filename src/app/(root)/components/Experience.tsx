@@ -12,6 +12,8 @@ const experiences = [
       "Led a team to deliver 10+ projects",
       "Improved performance by 40%",
       "Ensured 99.9% uptime",
+      "Migrated legacy systems to Azure",
+      "Reduced costs by 40%",
     ],
   },
   {
@@ -19,7 +21,7 @@ const experiences = [
     company: "Dynamic Tech Group",
     period: "2020 - 2022",
     achievements: [
-      "Delivered 15+ CMS and SaaS projects",
+      "Delivered 5+ CMS projects",
       "Migrated legacy systems to AWS",
       "Reduced costs by 30%",
     ],
