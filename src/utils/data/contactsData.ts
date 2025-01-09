@@ -1,3 +1,13 @@
+import {
+  Facebook,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+} from "lucide-react";
+
 export const contactsData = {
   email: "muhammadaqib86@gmail.com",
   phone: "+923484124477",
@@ -9,3 +19,33 @@ export const contactsData = {
   stackOverflow: "https://stackoverflow.com/users/11119419/muhammad-aqib",
   devUsername: "muhammadaqib86",
 };
+
+export const socialLinks = [
+  {
+    icon: Mail,
+    text: contactsData.email,
+    href: `mailto:${contactsData.email}`,
+  },
+  {
+    icon: Phone,
+    text: contactsData.phone,
+    href: `tel:${contactsData.phone}`,
+  },
+  { icon: MapPin, text: contactsData.address },
+  { icon: Github, text: "GitHub", href: contactsData.github },
+  {
+    icon: Linkedin,
+    text: "LinkedIn",
+    href: contactsData.linkedIn,
+  },
+  {
+    icon: Facebook,
+    text: "Facebook",
+    href: contactsData.facebook,
+  },
+  {
+    icon: Twitter,
+    text: "Twitter",
+    href: contactsData.twitter,
+  },
+];

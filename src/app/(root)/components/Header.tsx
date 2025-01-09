@@ -40,7 +40,11 @@ const Header = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" aria-hidden="true" />
+                  <Menu
+                    fontSize={30}
+                    className="text-white h-6 w-6"
+                    aria-hidden="true"
+                  />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
@@ -72,8 +76,10 @@ const Header = () => {
             ))}
           </nav>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <Button asChild variant="secondary">
-              <Link href="#contact">Hire Me</Link>
+            <Button asChild variant="secondary" className="bg-purple-400">
+              <Link href="#contact" className="text-white">
+                Hire Me
+              </Link>
             </Button>
           </div>
         </div>

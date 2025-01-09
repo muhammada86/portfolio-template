@@ -1,14 +1,12 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ContactIcon, Download } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
-import ShootingStars from "./ShootingStars";
 import AboutMe from "./AboutMe";
+import { CallToActionButtons } from "./CallToActionButtons";
 import HeroSectionRight from "./HeroSectionRight";
-import { personalData } from "@/utils/data/personal-data";
+import ShootingStars from "./ShootingStars";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -68,12 +66,12 @@ const HeroSection = () => {
           transform: "translate(-50%, -50%)",
         }}
       />
-      <div className=" max-w-7xl mx-auto sm:w-screen flex flex-col md:flex-row items-center space-between relative z-10 lg:mt-40 sm:mt-10">
+      <div className="max-w-7xl mx-auto sm:w-screen flex flex-col md:flex-row items-center space-between relative z-10 lg:mt-40 mt-24 ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="min-w-[500px] text-center md:text-left"
+          className="lg:min-w-[500px] text-center md:text-left px-12 xl:px-0 "
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
             Hi, I&apos;m <span className="text-secondary">Muhammad Aqib</span>
@@ -84,30 +82,7 @@ const HeroSection = () => {
           <p className="mt-3 text-lg text-gray-400">
             I craft seamless web and mobile applications to bring ideas to life.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-            <Link
-              href="#contact"
-              className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-green-500 hover:to-violet-600"
-            >
-              <button
-                onClick={() => window.open(personalData.resume, "_blank")}
-                className="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out  md:font-semibold flex items-center gap-1 hover:gap-3"
-              >
-                <span>View My Resume</span>
-                <Download />
-              </button>
-            </Link>
-            <Link
-              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-gray-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-              role="button"
-              target="_blank"
-              href="/"
-              // href={personalData.resume}
-            >
-              <span>Hire Me</span>
-              <ContactIcon size={16} />
-            </Link>
-          </div>
+          <CallToActionButtons />
         </motion.div>
         <HeroSectionRight />
       </div>

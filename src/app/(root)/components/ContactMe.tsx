@@ -1,33 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { submitContactForm } from "@/actions/contact-form";
+import { Heading } from "@/app/components/Heading";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  Facebook,
-  Twitter,
-} from "lucide-react";
-import { submitContactForm } from "@/actions/contact-form";
-
-const contactsData = {
-  email: "muhammadaqib86@gmail.com",
-  phone: "+923484124477",
-  address: "House #2, Street #3, Kharian, Gujrat",
-  github: "https://github.com/muhammada86",
-  facebook: "https://www.facebook.com/muhammad.aqib.3701",
-  linkedIn: "https://www.linkedin.com/in/muhammad-aqib-333640161/",
-  twitter: "https://twitter.com/#",
-  stackOverflow: "https://stackoverflow.com/users/11119419/muhammad-aqib",
-  devUsername: "muhammadaqib86",
-};
+import { socialLinks } from "@/utils/data/contactsData";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 const ContactMe = () => {
   const [formState, setFormState] = useState({
@@ -52,18 +33,11 @@ const ContactMe = () => {
 
   return (
     <section
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900 via-blue-900 to-blue-900"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
       id="contact"
     >
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12 text-white"
-        >
-          Let&apos;s Connect and Create Something Amazing
-        </motion.h2>
+        <Heading title=" Let's Connect and Create Something Amazing" />
         <div className="grid gap-8 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -90,7 +64,7 @@ const ContactMe = () => {
                       onChange={(e) =>
                         setFormState({ ...formState, name: e.target.value })
                       }
-                      className="my-2 bg-transparent border-b border-blue-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
+                      className="my-2 bg-transparent border-b border-purple-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
                       required
                     />
                   </div>
@@ -109,7 +83,7 @@ const ContactMe = () => {
                       onChange={(e) =>
                         setFormState({ ...formState, email: e.target.value })
                       }
-                      className="bg-transparent border-b border-blue-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
+                      className="bg-transparent border-b border-purple-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
                       required
                     />
                   </div>
@@ -127,13 +101,13 @@ const ContactMe = () => {
                       onChange={(e) =>
                         setFormState({ ...formState, message: e.target.value })
                       }
-                      className="bg-transparent border-b border-blue-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
+                      className="bg-transparent border-b border-purple-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
                       required
                     />
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-300"
+                    className="w-full bg-purple-500 hover:bg-purple-600 text-white transition-colors duration-300"
                   >
                     Send Message
                   </Button>
@@ -161,41 +135,13 @@ const ContactMe = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Card className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border-none shadow-xl">
+            <Card className="bg-white bg-opacity-10 backdrop-filter min-h-[425px] backdrop-blur-lg border-none shadow-xl">
               <CardContent className="p-6">
                 <h3 className="text-2xl font-semibold mb-6 text-white">
                   Contact Information
                 </h3>
                 <div className="space-y-4">
-                  {[
-                    {
-                      icon: Mail,
-                      text: contactsData.email,
-                      href: `mailto:${contactsData.email}`,
-                    },
-                    {
-                      icon: Phone,
-                      text: contactsData.phone,
-                      href: `tel:${contactsData.phone}`,
-                    },
-                    { icon: MapPin, text: contactsData.address },
-                    { icon: Github, text: "GitHub", href: contactsData.github },
-                    {
-                      icon: Linkedin,
-                      text: "LinkedIn",
-                      href: contactsData.linkedIn,
-                    },
-                    {
-                      icon: Facebook,
-                      text: "Facebook",
-                      href: contactsData.facebook,
-                    },
-                    {
-                      icon: Twitter,
-                      text: "Twitter",
-                      href: contactsData.twitter,
-                    },
-                  ].map((item, index) => (
+                  {socialLinks.map((item, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
@@ -203,13 +149,13 @@ const ContactMe = () => {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="flex items-center space-x-3"
                     >
-                      <item.icon className="w-5 h-5 text-blue-400" />
+                      <item.icon className="w-5 h-5 text-purple-400" />
                       {item.href ? (
                         <a
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-white hover:text-blue-400 transition-colors duration-300"
+                          className="text-white hover:text-purple-400 transition-colors duration-300"
                         >
                           {item.text}
                         </a>
@@ -232,7 +178,7 @@ const ContactMe = () => {
           <h3 className="text-2xl font-semibold text-white mb-4">
             Why Work With Me?
           </h3>
-          <p className="text-blue-300 max-w-2xl mx-auto">
+          <p className="text-purple-300 max-w-2xl mx-auto">
             I&apos;m passionate about creating exceptional digital experiences.
             With a keen eye for detail and a commitment to excellence, I&apos;ll
             bring your vision to life. Let&apos;s collaborate and turn your
