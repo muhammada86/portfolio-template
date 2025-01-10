@@ -1,6 +1,6 @@
 export const personalData = {
   name: "Muhammad Aqib",
-  profile: "/profile.png",
+  profile: "/avatar.png",
   designation: "Full Stack Developer",
   description: `I craft seamless web and mobile applications to bring ideas to life.`,
   experience: 4,

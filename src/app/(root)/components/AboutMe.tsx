@@ -52,7 +52,7 @@ const AboutMe = () => {
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-xl bg-gradient-to-r to-pink-500 from-violet-600">
             <motion.img
-              src="/avatar.png"
+              src={personalData.profile}
               alt="About Me"
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.1 }}

@@ -14,7 +14,6 @@ export default function Page() {
       <FloatingSVGs />
       <Header />
       <HeroSection />
-      {/* <AboutMe /> */}
       <SkillsSection />
       <Experience />
       <ProjectsPortfolio />

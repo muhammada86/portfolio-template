@@ -3,17 +3,20 @@
 import { submitContactForm } from "@/actions/contact-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { AnimatePresence, motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import FormField from "../FormField";
 
 const ContactForm = () => {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<{
     success?: boolean;
     message?: string;
@@ -21,13 +24,32 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const result = await submitContactForm(formData);
-    setFormStatus(result);
-    if (result.success) {
-      setFormState({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+    setFormStatus(null);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await submitContactForm(formData);
+      setFormStatus(result);
+      if (result.success) {
+        setFormState({ name: "", email: "", phone: "", message: "" });
+      }
+    } catch (error) {
+      setFormStatus({
+        success: false,
+        message: "An unexpected error occurred. Please try again.",
+      });
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
+  const handleInputChange =
+    (field: string) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormState({ ...formState, [field]: e.target.value });
+    };
 
   return (
     <motion.div
@@ -41,68 +63,61 @@ const ContactForm = () => {
             Get in Touch
           </h3>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="relative">
-              <label
-                htmlFor="name"
-                className="text-white text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:text-white peer-focus:text-sm"
-              >
-                Your Name
-              </label>
-              <Input
-                id="name"
-                name="name"
-                value={formState.name}
-                onChange={(e) =>
-                  setFormState({ ...formState, name: e.target.value })
-                }
-                className="my-2 bg-transparent border-b border-purple-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
-                required
-              />
-            </div>
-            <div className="relative">
-              <label
-                htmlFor="name"
-                className="text-white text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:text-white peer-focus:text-sm"
-              >
-                Your Email Address
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formState.email}
-                onChange={(e) =>
-                  setFormState({ ...formState, email: e.target.value })
-                }
-                className="bg-transparent border-b border-purple-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
-                required
-              />
-            </div>
-            <div className="relative">
-              <label
-                htmlFor="name"
-                className="text-white text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:text-white peer-focus:text-sm"
-              >
-                Your Message
-              </label>
-              <Textarea
-                id="message"
-                name="message"
-                value={formState.message}
-                onChange={(e) =>
-                  setFormState({ ...formState, message: e.target.value })
-                }
-                className="bg-transparent border-b border-purple-400 focus:border-white transition-colors duration-300 text-white placeholder-transparent"
-                required
-              />
-            </div>
+            <FormField
+              id="name"
+              name="name"
+              label="Your Name"
+              value={formState.name}
+              onChange={handleInputChange("name")}
+              disabled={isSubmitting}
+            />
+
+            <FormField
+              id="email"
+              name="email"
+              label="Your Email Address"
+              type="email"
+              value={formState.email}
+              onChange={handleInputChange("email")}
+              disabled={isSubmitting}
+            />
+
+            <FormField
+              id="phone"
+              name="phone"
+              label="Your Phone Number"
+              type="tel"
+              value={formState.phone}
+              onChange={handleInputChange("phone")}
+              disabled={isSubmitting}
+            />
+
+            <FormField
+              id="message"
+              name="message"
+              label="Your Message"
+              value={formState.message}
+              onChange={handleInputChange("message")}
+              isTextarea={true}
+              disabled={isSubmitting}
+            />
+
             <Button
               type="submit"
               className="w-full bg-purple-500 hover:bg-purple-600 text-white transition-colors duration-300"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? (
+                <div className="flex items-center justify-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>Sending...</span>
+                </div>
+              ) : (
+                "Send Message"
+              )}
             </Button>
           </form>
+
           <AnimatePresence>
             {formStatus && (
               <motion.div
