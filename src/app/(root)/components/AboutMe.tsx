@@ -1,6 +1,8 @@
 "use client";
 
 import { CardTitle } from "@/components/ui/card";
+import { aboutData } from "@/utils/data/aboutData";
+import { personalData } from "@/utils/data/personalData";
 import { motion } from "framer-motion";
 
 const AboutMe = () => {
@@ -25,27 +27,15 @@ const AboutMe = () => {
             </div>
             <div className="text-white">
               <ul className="space-y-4 text-lg leading-relaxed">
-                <li>
-                  <span>Dynamic software development professional.</span>
-                </li>
-                <li>
-                  <span>4 years of experience with modern technologies.</span>
-                </li>
-                <li>
-                  <span>
-                    Expertise in the MERN stack, DevOps, and cloud services.
-                  </span>
-                </li>
+                {aboutData.map((item, index) => (
+                  <li key={index}>
+                    <span>{item}</span>
+                  </li>
+                ))}
                 <li>
                   <span>
-                    Proven track record in leading teams and delivering
-                    projects.
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    📍 <span className="font-semibold">Location:</span> Kharian,
-                    Gujrat, Pakistan.
+                    📍 <span className="font-semibold">Location:</span>{" "}
+                    {personalData.address}
                   </span>
                 </li>
               </ul>

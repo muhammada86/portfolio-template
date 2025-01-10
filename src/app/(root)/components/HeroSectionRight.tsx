@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Terminal } from "lucide-react";
+import { personalData } from "@/utils/data/personalData";
+import { skillsData } from "@/utils/data/skillsData";
 
 const TypewriterText = ({
   text,
@@ -107,20 +109,20 @@ export default function HeroSectionRight() {
               <div className="ml-4">
                 <span className="text-purple-400">name:</span>{" "}
                 <span className="text-yellow-300">
-                  &apos;Muhammad Aqib&apos;
+                  &apos;{personalData.name}&apos;
                 </span>
                 ,
               </div>
               <div className="ml-4">
                 <span className="text-purple-400">title:</span>{" "}
                 <span className="text-yellow-300">
-                  &apos;Full Stack Developer&apos;
+                  &apos;{personalData.designation}&apos;
                 </span>
                 ,
               </div>
               <div className="ml-4">
                 <span className="text-purple-400">experience:</span>{" "}
-                <span className="text-white">4+ </span>
+                <span className="text-white">{personalData.experience}+ </span>
                 <span className="text-yellow-300">&apos;years&apos;</span>,
               </div>
               <div className="text-blue-400">{"}"}</div>
@@ -129,28 +131,19 @@ export default function HeroSectionRight() {
           {activeTab === "skills" && (
             <CodeBlock>
               <div className="text-blue-400">developer.skills = [</div>
-              {[
-                "React",
-                "NextJS",
-                "Redux",
-                "Express",
-                "NestJS",
-                "MySQL",
-                "MongoDB",
-                "GraphQL",
-                "PostgreSQL",
-                "AWS",
-                "Azure",
-              ].map((skill, index) => (
+              {skillsData.map((skill, index) => (
                 <motion.div
-                  key={skill}
+                  key={skill.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="ml-4 flex items-center space-x-2"
                 >
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-yellow-300">&apos;{skill}&apos;</span>,
+                  <span className="text-yellow-300">
+                    &apos;{skill.name}&apos;
+                  </span>
+                  ,
                 </motion.div>
               ))}
               <div className="text-blue-400">]</div>

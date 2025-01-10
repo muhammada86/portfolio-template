@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { skillsData } from "@/utils/data/skills";
+import { skillsData } from "@/utils/data/skillsData";
 import { Heading } from "@/app/components/Heading";
 
 const SkillsSection = () => {

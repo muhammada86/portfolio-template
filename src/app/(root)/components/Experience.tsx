@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight, Building2, Calendar, Award } from "lucide-react";
-import { experiencesData } from "@/utils/data/experience";
+import { experiencesData } from "@/utils/data/experienceData";
 import { FloatingBubbbles } from "@/app/components/FloatingBubbles";
 import { Heading } from "@/app/components/Heading";
 

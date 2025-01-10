@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: GeistMonoVF, Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
 }
 

@@ -1,4 +1,4 @@
-````markdown
+```markdown
 # Dynamic Portfolio Template
 
 This is a dynamic portfolio template built with NextJS. By simply editing the object values in the `src/utils/data/` folder, you can quickly create and customize a portfolio tailored to your needs without any complex configurations. Everything is dynamic and easy to update!
@@ -23,7 +23,7 @@ Click on the Fork button in the top-right corner of this repository to create yo
 ### 2. Clone the Repository
 
 After forking, clone the repository to your local machine:
-````
+```
 
 ```bash
 git clone https://github.com/muhammada86/portfolio-template.git

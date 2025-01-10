@@ -1,6 +1,6 @@
 "use client";
 
-import { personalData } from "@/utils/data/personal-data";
+import { personalData } from "@/utils/data/personalData";
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
 import Link from "next/link";

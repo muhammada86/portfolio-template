@@ -7,6 +7,7 @@ import AboutMe from "./AboutMe";
 import { CallToActionButtons } from "./CallToActionButtons";
 import HeroSectionRight from "./HeroSectionRight";
 import ShootingStars from "./ShootingStars";
+import { personalData } from "@/utils/data/personalData";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -74,13 +75,16 @@ const HeroSection = () => {
           className="lg:min-w-[500px] text-center md:text-left px-12 xl:px-0 "
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
-            Hi, I&apos;m <span className="text-secondary">Muhammad Aqib</span>
+            Hi, I&apos;m{" "}
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text ">
+              {personalData.name}
+            </span>
           </h1>
           <p className="mt-3 text-xl text-gray-300 sm:mt-5 sm:text-2xl">
-            MERN Stack Developer & Cloud Computing Enthusiast
+            {personalData.designation}
           </p>
           <p className="mt-3 text-lg text-gray-400">
-            I craft seamless web and mobile applications to bring ideas to life.
+            {personalData.description}
           </p>
           <CallToActionButtons />
         </motion.div>

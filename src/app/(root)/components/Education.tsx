@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Calendar, ChevronDown, MapPin } from "lucide-react";
 import { useState } from "react";
 import ShootingStars from "./ShootingStars";
-import { educationData } from "@/utils/data/educations";
+import { educationData } from "@/utils/data/educationData";
 import { Heading } from "@/app/components/Heading";
 
 export default function Education() {

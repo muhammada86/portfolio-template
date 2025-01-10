@@ -4,13 +4,14 @@ import { Heading } from "@/app/components/Heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { projectsData } from "@/utils/data/projects-data";
+import { projectsData } from "@/utils/data/projectsData";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Github, Sparkles, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 // Define the types for project data
-interface Project {
+interface ProjectType {
   id: number;
   name: string;
   description: string;
@@ -21,7 +22,9 @@ interface Project {
 }
 
 const ProjectPortfolio = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
+    null
+  );
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   return (
@@ -58,7 +61,7 @@ const ProjectPortfolio = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
-            {projectsData.map((project: Project, index: number) => (
+            {projectsData.map((project: ProjectType, index: number) => (
               <motion.div
                 key={project.id}
                 layout
@@ -117,15 +120,15 @@ const ProjectPortfolio = () => {
                           className="bg-white/10 border-white/20 hover:bg-white/20"
                           asChild
                         >
-                          <a
+                          <Link
                             href={project.demo}
+                            passHref={true}
                             target="_blank"
-                            rel="noopener noreferrer"
                             className="flex items-center text-purple-200 "
                           >
                             <ExternalLink className="mr-2 h-4 w-4" />
                             Live Demo
-                          </a>
+                          </Link>
                         </Button>
                       )}
                       {project.code && (
@@ -134,15 +137,15 @@ const ProjectPortfolio = () => {
                           className="bg-white/10 border-white/20 hover:bg-white/20"
                           asChild
                         >
-                          <a
+                          <Link
                             href={project.code}
+                            passHref={true}
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center"
+                            className="flex items-center  "
                           >
                             <Github className="mr-2 h-4 w-4" />
                             Source
-                          </a>
+                          </Link>
                         </Button>
                       )}
                     </motion.div>
@@ -206,26 +209,28 @@ const ProjectPortfolio = () => {
                           className="bg-purple-600 hover:bg-purple-700"
                           asChild
                         >
-                          <a
+                          <Link
                             href={selectedProject.demo}
+                            passHref={true}
                             target="_blank"
-                            rel="noopener noreferrer"
+                            className="flex items-center text-purple-200 "
                           >
                             <ExternalLink className="mr-2 h-4 w-4" />
                             View Live Demo
-                          </a>
+                          </Link>
                         </Button>
                       )}
                       {selectedProject.code && (
                         <Button variant="outline" asChild>
-                          <a
+                          <Link
                             href={selectedProject.code}
+                            passHref={true}
                             target="_blank"
-                            rel="noopener noreferrer"
+                            className="flex items-center text-purple-200 "
                           >
                             <Github className="mr-2 h-4 w-4" />
                             View Source Code
-                          </a>
+                          </Link>
                         </Button>
                       )}
                     </div>

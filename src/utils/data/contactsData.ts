@@ -20,6 +20,9 @@ export const contactsData = {
   devUsername: "muhammadaqib86",
 };
 
+export const whyWorkWithMe =
+  "I'm passionate about creating exceptional digital experiences. With a keen eye for detail and a commitment to excellence, I'll bring your vision to life. Let's collaborate and turn your ideas into reality!";
+
 export const socialLinks = [
   {
     icon: Mail,

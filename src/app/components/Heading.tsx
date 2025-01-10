@@ -19,7 +19,7 @@ export const Heading: FC<HeadingProps> = ({ title, subtitle }) => {
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
-        <h2 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text inline-block">
+        <h2 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text inline-block">
           {title}
         </h2>
       </motion.div>
