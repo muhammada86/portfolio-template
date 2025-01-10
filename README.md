@@ -104,6 +104,7 @@ export const metaData = {
 4. Save the file and reload your development server. Your custom portfolio is now ready!
 
 5. You have to integrate [Resend](https://resend.com/) to receive contact emails. You can signup and get the api key and add it in `.env` file.
+6. To update the icon.ico in src/app, you can generate it from [Fav Icon Generator](https://favicon.io/favicon-converter/)
 
 ---
 
