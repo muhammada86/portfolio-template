@@ -103,6 +103,8 @@ export const metaData = {
 
 4. Save the file and reload your development server. Your custom portfolio is now ready!
 
+5. To update the icon.ico in src/app, you can generate it from [Fav Icon Generator](https://favicon.io/favicon-converter/)
+
 ---
 
 ## 🌟 Deployment
