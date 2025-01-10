@@ -103,6 +103,8 @@ export const metaData = {
 
 4. Save the file and reload your development server. Your custom portfolio is now ready!
 
+5. You have to integrate [Resend](https://resend.com/) to receive contact emails. You can signup and get the api key and add it in `.env` file.
+
 ---
 
 ## 🌟 Deployment
@@ -121,6 +123,7 @@ git push origin main
 
 2. Go to [Vercel](https://vercel.com/) and import your repository.
 3. Follow the instructions to deploy.
+4. You will have to add resend API value in Vercel Environment Variable
 
 Your portfolio will be live in minutes!
 
